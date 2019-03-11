@@ -1,0 +1,7 @@
+1. C:\Program Files\Java\jdk1.8.0_162
+2. C:\Program Files\Java\jdk1.8.0_162\bin
+3. javac nome_classe.java Saída: nome_classe.class
+4. java nome_classe
+5. Variáveis de ambiente são caminhos para programas padrão do sistema.
+6. Sim
+7. SETX <NOME_DA_VARIAVEL> "<VALOR_DA_VARIAVEL>" -m
