@@ -1,31 +1,17 @@
 package com.company;
 
 public class Compra {
-    private long id;
-    private String cliente;
-    private String produto;
+    private int id;
+    private Cliente cliente;
+    private Produto produto;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public Compra(int id, Cliente cliente, Produto produto){
         this.id = id;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
         this.cliente = cliente;
-    }
-
-    public String getProduto() {
-        return produto;
-    }
-
-    public void setProduto(String produto) {
         this.produto = produto;
+    }
+
+    public String pegarDetalhes(){
+        return "ID: " + id + " Nome: " + cliente.getNome() + " Produto: " + produto.getNome();
     }
 }
