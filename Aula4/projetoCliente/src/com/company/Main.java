@@ -8,5 +8,8 @@ public class Main {
 
 	    Compra c1 = new Compra(1, cliente, produto);
         System.out.println(c1.pegarDetalhes());
+
+        Compra c2 = new Compra(2, new Cliente("Roberto"), new Produto(1, 4.5, "Café"));
+        System.out.println(c2.pegarDetalhes());
     }
 }
