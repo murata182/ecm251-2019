@@ -15,8 +15,8 @@ public class Funcionario {
         return this.salarioBase;
     }
 
-    public double getPorcentagemComissao(){
-        return this.porcentagemComissao;
+    public double getComissao(double totalVendasMes){
+        return this.porcentagemComissao * totalVendasMes;
     }
 
     public double getSalarioMes(double totalVendasMes){
