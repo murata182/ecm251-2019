@@ -10,6 +10,7 @@ public class Usuario {
     private String nascimento;
     private Carteira carteira;
 
+    //Construtor sem carteira pois ela pode ser criada posteriormente
     public Usuario(String nome, String email, String cpf, String nascimento){
         this.setNome(nome);
         this.setEmail(email);

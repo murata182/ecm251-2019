@@ -3,17 +3,12 @@
 
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Scanner;
-
 public class Carteira {
     private long idCarteira;
     private String nomeCarteira;
     private String senhaAcesso;
     private Cartao cartaoDebito;
     private Cartao cartaoCredito;
-    private Usuario usuario;
 
     public Carteira(long idCarteira, String nomeCarteira, String senhaAcesso){
         this.idCarteira = idCarteira;
@@ -21,6 +16,7 @@ public class Carteira {
         this.setSenhaAcesso(senhaAcesso);
     }
 
+    //Exibe apenas dados não sigilosos
     public String getDados(){
         return "Id da carteira: " + this.idCarteira  + "\n" + "Nome da carteira: " + this.nomeCarteira  + "\n" ;
     }
@@ -33,7 +29,15 @@ public class Carteira {
         this.senhaAcesso = senhaAcesso;
     }
 
+    //Remove um cartão da carteira
+    public void removeCartao(Cartao cartao){
+        if (getTipoCartao(cartao) == "Debito")
+            this.cartaoDebito = null;
+        else
+            this.cartaoCredito = null;
+    }
 
+    //Adiciona um cartão à carteira
     public void addCartao(Cartao cartao){
         if (getTipoCartao(cartao) == "Debito")
             this.cartaoDebito = cartao;
@@ -46,12 +50,15 @@ public class Carteira {
         return cartao.getTipo();
     }
 
+    //Realiza pagamento
+    //Pagamento implementado na Carteira, pois possui acesso aos cartões e possui um único usuário que realiza esse pagamento
     public boolean pagamento(Cartao cartao, String tipo, String senha){
-
+        //Confere o tipo de cartão (crédito ou débito)
         if ( cartao.getTipo() != tipo) {
             System.out.println("Tipo do cartão inválido (Jumento)\n");
             return false;
         }else {
+            //Confere se a senha está correta
             if (cartao.getSenha() == senha) {
                 System.out.println("Pagamento Confirmado!\n");
                 return true;

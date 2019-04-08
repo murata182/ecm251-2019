@@ -31,7 +31,7 @@ public class Cartao {
         this.numeroConta=numeroConta;
     }
 
-
+    //Exibe apenas informações não sigilosas
     public String getDados(){
         return "Id do cartão: "+ this.idCartao  + "\n" + "Taxa de conversão: " + this.taxaConversaoDolar + "\n" + "Label: " +this.label  + "\n" + "Emissor do cartão: " + this.emissorCartao + "\n" + "Tipo: " + this.getTipo() + "\n" + "Data de emissão: " +this.dataEmissao  + "\n" + "Validade: " + this.validade + "\n" + "Número do cartão: " + this.numeroCartao  + "\n" + "Número da conta: " +this.numeroConta +"\n";
     }
