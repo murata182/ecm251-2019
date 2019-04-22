@@ -1,14 +1,9 @@
 package com.company;
 
-public class Gerente {
-    private String nome;
-    private double porcentagemComissao;
-    private double salarioBase;
+public class Gerente extends Funcionario{
 
-    public Gerente(String nome, double salarioBase){
-        this.nome = nome;
-        this.salarioBase = salarioBase;
-        this.porcentagemComissao = 0.1;
+    public Gerente(String nome, double salarioBase, double porcentagemComissao){
+        super(nome, salarioBase, porcentagemComissao);
     }
 
     public double getSalarioBase(){

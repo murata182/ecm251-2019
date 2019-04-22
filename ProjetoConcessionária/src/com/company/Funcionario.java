@@ -1,14 +1,14 @@
 package com.company;
 
 public class Funcionario {
-    private String nome;
-    private double porcentagemComissao;
-    private double salarioBase;
+    protected String nome;
+    protected double porcentagemComissao;
+    protected double salarioBase;
 
-    public Funcionario(String nome, double salarioBase){
+    public Funcionario(String nome, double salarioBase, double porcentagemComissao){
         this.nome = nome;
         this.salarioBase = salarioBase;
-        this.porcentagemComissao = 0.05;
+        this.porcentagemComissao = porcentagemComissao;
     }
 
     public double getSalarioBase(){

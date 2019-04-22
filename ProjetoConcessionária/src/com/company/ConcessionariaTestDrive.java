@@ -2,8 +2,8 @@ package com.company;
 
 public class ConcessionariaTestDrive {
     public static void main(String[] args) {
-        Gerente g1 = new Gerente("Carlos II", 6500.0);
-        Vendedor v1 = new Vendedor("Joao", 1000.0, g1);
+        Gerente g1 = new Gerente("Carlos II", 6500.0,0.6);
+        Vendedor v1 = new Vendedor("Joao", 1000.0,0.2, g1);
         double totalVendasMes = 10000.0;
 
         System.out.println("Vendedor: ");

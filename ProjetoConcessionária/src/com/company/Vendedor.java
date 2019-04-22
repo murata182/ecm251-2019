@@ -1,15 +1,10 @@
 package com.company;
 
-public class Vendedor {
-    private String nome;
-    private double porcentagemComissao;
-    private double salarioBase;
+public class Vendedor extends Funcionario{
     private Gerente gerente;
 
-    public Vendedor(String nome, double salarioBase, Gerente gerente){
-        this.nome = nome;
-        this.salarioBase = salarioBase;
-        this.porcentagemComissao = 0.05;
+    public Vendedor(String nome, double salarioBase, double porcentagemComissao, Gerente gerente){
+        super(nome, salarioBase, porcentagemComissao);
         this.gerente = gerente;
     }
 
