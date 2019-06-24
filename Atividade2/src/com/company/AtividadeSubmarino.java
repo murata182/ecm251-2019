@@ -52,8 +52,9 @@ public class AtividadeSubmarino {
     
    
     static public void menuInicial(){
+        try{
         int op;
-        do {            
+        do {
         
             System.out.println("Bem vindo ao Submarimbo. Seu melhor console de compra.");
             System.out.println("[1] - Todos os produtos");
@@ -67,11 +68,11 @@ public class AtividadeSubmarino {
             
             op = sc1.nextInt();
             Produto.departamento depTemp;
-            
+
             switch (op){
                 case 1:
                     menuTodos();
-                    break;                    
+                    break;
                 case 2:
                     menuDepartamento(Produto.departamento.games);
                     break;
@@ -94,10 +95,12 @@ public class AtividadeSubmarino {
                 default:
                     System.out.println("Operação Invalida.");
             }
-        
+
         } while (op != 8);
- 
-    }
+
+    }catch (Exception ex){
+            System.out.println("Deu merda " + ex);
+        }}
 
     //Menu já elaborado, só transcrevi o codigo
     static public void menuDepartamento(Produto.departamento depTemp){
