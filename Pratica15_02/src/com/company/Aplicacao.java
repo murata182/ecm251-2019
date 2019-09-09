@@ -1,18 +1,15 @@
 package com.company;
 
-import auxiliar_database.UsuariosDAO;
+import auxiliar_database.SingletonUsuariosDAO;
 import model.Usuario;
-import utilities.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
-    private UsuariosDAO usuariosDAO;
     private List<Usuario> users;
     public Aplicacao(){
-        usuariosDAO = new UsuariosDAO(Constants.URL_MEU_BANCO);
         users = new ArrayList<>();
     }
 
@@ -33,10 +30,10 @@ public class Aplicacao {
                     Usuario user = new Usuario(
                             nome, email, senha
                     );
-                    usuariosDAO.insertUsuario(user);
+                    SingletonUsuariosDAO.getInstance().insertUsuario(user);
                     break;
                     case 2:
-                        users = usuariosDAO.getAllUsuario();
+                        users = SingletonUsuariosDAO.getInstance().getAllUsuario();
                         for (Usuario u : users) {
                             System.out.print("ID: " + u.id);
                             System.out.println(" Nome: " + u.nome);
@@ -45,7 +42,7 @@ public class Aplicacao {
                     case 3:
                         System.out.printf("Informe o id: ");
                         id = scanner.nextInt();
-                        us = usuariosDAO.getUsuario(id);
+                        us = SingletonUsuariosDAO.getInstance().getUsuario(id);
                         System.out.println();
                         if(us == null)
                             System.out.println("Usuário não cadastrado!");
@@ -58,7 +55,7 @@ public class Aplicacao {
                     case 4:
                         System.out.printf("Informe o id: ");
                         id = scanner.nextInt();
-                        us = usuariosDAO.getUsuario(id);
+                        us = SingletonUsuariosDAO.getInstance().getUsuario(id);
                         System.out.println();
                         if(us == null)
                             System.out.println("Usuário não cadastrado!");
@@ -78,13 +75,13 @@ public class Aplicacao {
                                 case 2: us.email = temp; break;
                                 case 3: us.senha = temp; break;
                             }
-                            usuariosDAO.updateUserById(us);
+                            SingletonUsuariosDAO.getInstance().updateUserById(us);
                         }
                         break;
                     case 5:
                         System.out.println("ID para deletar: ");
                         id = scanner.nextInt();
-                        usuariosDAO.deleteUserById(id);
+                        SingletonUsuariosDAO.getInstance().deleteUserById(id);
                         break;
                     default: return;
 

@@ -7,9 +7,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuariosDAO {
+public class SingletonUsuariosDAO {
     private Connection connection;
-    public UsuariosDAO(String myConnection){
+    private static SingletonUsuariosDAO instance = null;
+
+    public static SingletonUsuariosDAO getInstance(){
+        if(instance == null)
+            instance = new SingletonUsuariosDAO(Constants.URL_MEU_BANCO);
+        return instance;
+    }
+    private SingletonUsuariosDAO(String myConnection){
         try {
             connection = DriverManager.getConnection(myConnection);
             connection.setAutoCommit(false);
@@ -21,7 +28,7 @@ public class UsuariosDAO {
     public boolean insertUsuario(Usuario user){
         PreparedStatement comandoSQL;
         try {
-             comandoSQL = connection.prepareStatement(Constants.getInsert(Constants.TABELA_USUARIO, 4));
+            comandoSQL = connection.prepareStatement(Constants.getInsert(Constants.TABELA_USUARIO, 4));
             comandoSQL.setString(2, user.nome);
             comandoSQL.setString(3, user.email);
             comandoSQL.setString(4, user.senha);
