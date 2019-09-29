@@ -1,0 +1,103 @@
+//Conectar DATABASE
+
+String dbURL = "jdbc:mysql://localhost:3306/sampledb";
+String username = "root";
+String password = "secret";
+ 
+try {
+ 
+    Connection conn = DriverManager.getConnection(dbURL, username, password);
+ 
+    if (conn != null) {
+        System.out.println("Connected");
+    }
+} catch (SQLException ex) {
+    ex.printStackTrace();
+}
+
+//Não esquecer de fechar a conn	
+conn.close();
+
+//Insert
+
+String sql = "INSERT INTO Users (username, password, fullname, email) VALUES (?, ?, ?, ?)";
+ 
+PreparedStatement statement = conn.prepareStatement(sql);
+statement.setString(1, "bill");
+statement.setString(2, "secretpass");
+statement.setString(3, "Bill Gates");
+statement.setString(4, "bill.gates@microsoft.com");
+
+//
+
+
+//Selecionar Todo mundo
+
+String sql = "SELECT * FROM Users";
+ 
+Statement statement = conn.createStatement();
+ResultSet result = statement.executeQuery(sql);
+ 
+int count = 0;
+ 
+while (result.next()){
+    String name = result.getString(2);
+    String pass = result.getString(3);
+    String fullname = result.getString("fullname");
+    String email = result.getString("email");
+ 
+    String output = "User #%d: %s - %s - %s - %s";
+    System.out.println(String.format(output, ++count, name, pass, fullname, email));
+}
+
+//
+
+//UPDATE
+
+String sql = "UPDATE Users SET password=?, fullname=?, email=? WHERE username=?";
+ 
+PreparedStatement statement = conn.prepareStatement(sql);
+statement.setString(1, "123456789");
+statement.setString(2, "William Henry Bill Gates");
+statement.setString(3, "bill.gates@microsoft.com");
+statement.setString(4, "bill");
+ 
+int rowsUpdated = statement.executeUpdate();
+if (rowsUpdated > 0) {
+    System.out.println("An existing user was updated successfully!");
+}
+
+//
+
+
+//DELETE
+String sql = "DELETE FROM Users WHERE username=?";
+ 
+PreparedStatement statement = conn.prepareStatement(sql);
+statement.setString(1, "bill");
+ 
+int rowsDeleted = statement.executeUpdate();
+if (rowsDeleted > 0) {
+    System.out.println("A user was deleted successfully!");
+}
+
+//
+
+
+//Singleton
+
+public final class Singleton {
+    private static Singleton instance;
+    public String value;
+
+    private Singleton() {}
+
+    public static Singleton getInstance(String value) {
+        if (instance == null) {
+            instance = new Singleton(value);
+        }
+        return instance;
+    }
+}
+
+// Para chamar/Usar é necessário passar pela chamada getInstance
