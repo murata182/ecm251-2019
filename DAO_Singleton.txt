@@ -101,3 +101,16 @@ public final class Singleton {
 }
 
 // Para chamar/Usar é necessário passar pela chamada getInstance
+
+
+//DAO é criar uma classe que gerencia toda a instancia de conexão com o nosso DB
+//Então todos os métodos do CRUD ficará dentro do nosso DAO
+
+
+//CRIAR SINGLETON
+
+//Make constructor private.
+//Make a private constant static instance (class-member) of this Singleton class.
+//Write a static/factory method that returns the object of the singleton class that we have created as a class-member instance.
+//We can also mark a static member as public to access constant static instance directly. But, I like to access class/instance members via methods only.
+//So, the singleton class is different from a normal Java class in terms of instantiation. For a normal class, we use a constructor, whereas for singleton class we use the getInstance()method.
