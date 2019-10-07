@@ -4,7 +4,9 @@
 
 package com.company;
 
+import auxiliar_database.ProdutoDAO;
 import auxiliar_database.UsuarioDAO;
+import auxiliar_database.VendaDAO;
 import model.Produto;
 import model.Usuario;
 import model.Venda;
@@ -71,7 +73,7 @@ public class Aplicacao {
                     categoria = scanner.next();
 
                     Produto produto = new Produto(nome,preco,quantidade,fabricante,categoria);
-                    if(UsuarioDAO.getInstance().insertProduto(produto))
+                    if(ProdutoDAO.getInstance().insertProduto(produto))
                         System.out.println("Produto adicionado");
                     //
 
@@ -83,7 +85,7 @@ public class Aplicacao {
                     int o = scanner.nextInt();
                     switch (o){
                         case 0:
-                            produtos = UsuarioDAO.getInstance().getAllProdutos();
+                            produtos = ProdutoDAO.getInstance().getAllProdutos();
                             for (Produto p: produtos){
                                 System.out.println("Nome: " + p.nome+ "\tPreço: " +p.preco+ "\tQuantidade: " + p.quantidade+
                                         "\tFabricante: "+ p.fabricante + "\tCategoria: " + p.categoria);
@@ -92,7 +94,7 @@ public class Aplicacao {
                         case 1:
                             System.out.println("Qual categoria você quer? (Ferramenta ou Tinta)");
                             categoria = scanner.next();
-                            produtos = UsuarioDAO.getInstance().getProdutoCategoria(categoria);
+                            produtos = ProdutoDAO.getInstance().getProdutoCategoria(categoria);
                             for (Produto p: produtos){
                                 System.out.println("Nome: " + p.nome+ "\tPreço: " +p.preco+ "\tQuantidade: " + p.quantidade+
                                         "\tFabricante: "+ p.fabricante + "\tCategoria: " + p.categoria);
@@ -117,7 +119,7 @@ public class Aplicacao {
                         produtoNome = scanner.next();
 
                         Venda venda = new Venda(nome, quantidade, produtoNome);
-                        if (UsuarioDAO.getInstance().insertVenda(venda))
+                        if (VendaDAO.getInstance().insertVenda(venda))
                             System.out.println("Venda concluída");
                     }
                     else System.out.println("Usuário não existente");
